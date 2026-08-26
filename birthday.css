@@ -1,0 +1,899 @@
+/* =========================================
+   PAGE
+========================================= */
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #fffdf5 0px,
+            #fffdf5 21px,
+            #f3c9c5 21px,
+            #f3c9c5 43px
+        );
+
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================================
+   BIRTHDAY IMAGE
+========================================= */
+
+.birthday-text {
+
+    position: absolute;
+
+    width: 360px;
+
+    max-width: 60vw;
+
+    height: auto;
+
+    top: 8%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 20;
+
+    opacity: 0;
+
+    animation:
+        textAppear 1.5s ease-out 1s forwards;
+}
+
+
+@keyframes textAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            scale(.7);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+}
+
+
+/* =========================================
+   FALLING BALLOONS
+========================================= */
+
+.balloon {
+    position: absolute;
+    bottom: -40px;
+
+    width: 14px;
+    height: 18px;
+
+    border-radius: 50%;
+
+    opacity: 0.8;
+
+    animation:
+        balloonFloat linear infinite;
+
+    box-shadow:
+        inset -3px -3px 5px rgba(0,0,0,.12),
+        0 2px 5px rgba(0,0,0,.08);
+}
+
+.balloon::after {
+    content: "";
+
+    position: absolute;
+
+    top: 100%;
+    left: 50%;
+
+    width: 1px;
+    height: 22px;
+
+    background: rgba(80,80,80,.45);
+}
+
+@keyframes balloonFloat {
+
+    0% {
+        transform:
+            translateY(0)
+            translateX(0)
+            rotate(-5deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .8;
+    }
+
+    50% {
+        transform:
+            translateY(-55vh)
+            translateX(25px)
+            rotate(7deg);
+    }
+
+    100% {
+        transform:
+            translateY(-115vh)
+            translateX(-25px)
+            rotate(-7deg);
+        opacity: 0;
+    }
+}
+
+
+@keyframes balloonFall {
+
+    0% {
+
+        transform:
+            translateX(0)
+            rotate(-5deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateX(25px)
+            rotate(5deg);
+
+    }
+
+    100% {
+
+        transform:
+            translateY(110vh)
+            translateX(-25px)
+            rotate(-5deg);
+
+    }
+
+}
+
+
+/* =========================================
+   FRIEND PHOTOS
+========================================= */
+
+.friend-photo {
+
+    position: absolute;
+
+    width: 105px;
+
+    height: 125px;
+
+    padding: 6px;
+
+    background: white;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.2);
+
+    z-index: 15;
+
+    opacity: 0;
+
+}
+
+
+.friend-photo img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+
+/* PHOTO POSITIONS */
+
+.photo1 {
+
+    left: 12%;
+
+    top: 34%;
+
+    transform: rotate(-8deg);
+
+    animation:
+        photoLeft 1s ease-out 2.4s forwards;
+}
+
+
+.photo2 {
+
+    right: 12%;
+
+    top: 34%;
+
+    transform: rotate(8deg);
+
+    animation:
+        photoRight 1s ease-out 2.6s forwards;
+}
+
+
+.photo3 {
+
+    left: 15%;
+
+    top: 67%;
+
+    transform: rotate(7deg);
+
+    animation:
+        photoLeft 1s ease-out 2.8s forwards;
+}
+
+
+.photo4 {
+
+    right: 15%;
+
+    top: 67%;
+
+    transform: rotate(-7deg);
+
+    animation:
+        photoRight 1s ease-out 3s forwards;
+}
+
+
+@keyframes photoLeft {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateX(-100px)
+            rotate(-20deg);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
+
+}
+
+
+@keyframes photoRight {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateX(100px)
+            rotate(20deg);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* =========================================
+   CAKE
+========================================= */
+
+.cake-section {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 30;
+
+    text-align: center;
+
+    animation:
+        cakeDrop 1.5s
+        cubic-bezier(.22,1,.36,1)
+        3s both;
+}
+
+
+.cake {
+
+    position: relative;
+
+    width: 220px;
+
+    height: 145px;
+
+    margin: auto;
+}
+
+
+/* Bottom */
+
+.cake-bottom {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 5px;
+
+    width: 210px;
+
+    height: 58px;
+
+    background: #d86b8a;
+
+    border-radius:
+        12px
+        12px
+        18px
+        18px;
+
+    box-shadow:
+        0 8px 12px
+        rgba(0,0,0,.18);
+}
+
+
+/* Middle */
+
+.cake-middle {
+
+    position: absolute;
+
+    bottom: 48px;
+
+    left: 15px;
+
+    width: 190px;
+
+    height: 48px;
+
+    background: #f39abb;
+
+    border-radius: 12px;
+}
+
+
+/* Top */
+
+.cake-top {
+
+    position: absolute;
+
+    bottom: 83px;
+
+    left: 20px;
+
+    width: 180px;
+
+    height: 42px;
+
+    background: #fff1f7;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 6px 0 #f39abb;
+}
+
+
+/* =========================================
+   CANDLES
+========================================= */
+
+.candle {
+
+    position: absolute;
+
+    bottom: 113px;
+
+    width: 13px;
+
+    height: 45px;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            white 0px,
+            white 6px,
+            #ff69b4 6px,
+            #ff69b4 12px
+        );
+
+    border-radius: 4px;
+
+    z-index: 10;
+}
+
+
+.candle1 {
+    left: 45px;
+}
+
+.candle2 {
+    left: 78px;
+}
+
+.candle3 {
+    left: 105px;
+}
+
+.candle4 {
+    left: 132px;
+}
+
+.candle5 {
+    left: 165px;
+}
+
+
+/* =========================================
+   FLAMES
+========================================= */
+
+.flame {
+
+    position: absolute;
+
+    top: -24px;
+
+    left: 50%;
+
+    width: 15px;
+
+    height: 22px;
+
+    transform:
+        translateX(-50%);
+
+    background: #ffb300;
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    box-shadow:
+        0 0 8px #ffb300,
+        0 0 18px #ff8c00;
+
+    animation:
+        lightCandle
+        .6s
+        ease-out
+        4.4s
+        forwards,
+
+        flicker
+        .15s
+        ease-in-out
+        5s
+        infinite
+        alternate;
+}
+
+
+.flame.blown-out {
+
+    opacity: 0 !important;
+
+    animation: none !important;
+
+    transform:
+        translateX(-50%)
+        scale(0);
+}
+
+
+@keyframes lightCandle {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            scale(0);
+
+    }
+
+    70% {
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            scale(1.25);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            scale(1);
+
+    }
+
+}
+
+
+@keyframes flicker {
+
+    from {
+
+        transform:
+            translateX(-50%)
+            scale(1)
+            rotate(-3deg);
+
+    }
+
+    to {
+
+        transform:
+            translateX(-50%)
+            scale(.85)
+            rotate(3deg);
+
+    }
+
+}
+
+
+/* =========================================
+   CAKE DROP
+========================================= */
+
+@keyframes cakeDrop {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -100vh);
+
+    }
+
+    70% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, 15px);
+
+    }
+
+    85% {
+
+        transform:
+            translate(-50%, -8px);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, 0);
+
+    }
+
+}
+
+
+/* =========================================
+   BLOW BUTTON
+========================================= */
+
+#blowButton {
+
+    margin-top: 18px;
+
+    padding:
+        12px 32px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: #ff4f9a;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 15px
+        rgba(0,0,0,.2);
+
+    transition:
+        transform .25s,
+        box-shadow .25s;
+
+    position: relative;
+
+    z-index: 100;
+}
+
+
+#blowButton:hover {
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 7px 20px
+        rgba(255,20,147,.35);
+}
+
+
+/* =========================================
+   PARTY POPPER
+========================================= */
+
+#party-container {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 100;
+}
+
+
+.party-piece {
+
+    position: absolute;
+
+    top: 55%;
+
+    width: 9px;
+
+    height: 15px;
+
+    border-radius: 2px;
+
+    animation:
+        partyPop
+        1.8s
+        ease-out
+        forwards;
+}
+
+
+@keyframes partyPop {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+            translate(0,0)
+            scale(1)
+            rotate(0deg);
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(.7)
+            rotate(var(--rotate));
+
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .birthday-text {
+
+        width: 270px;
+
+        max-width: 75vw;
+
+        top: 7%;
+    }
+
+
+    .friend-photo {
+
+        width: 70px;
+
+        height: 85px;
+
+        padding: 4px;
+    }
+
+
+    .photo1 {
+        left: 3%;
+        top: 38%;
+    }
+
+    .photo2 {
+        right: 3%;
+        top: 38%;
+    }
+
+    .photo3 {
+        left: 5%;
+        top: 67%;
+    }
+
+    .photo4 {
+        right: 5%;
+        top: 67%;
+    }
+
+
+    .cake-section {
+
+        top: 52%;
+    }
+
+
+    .cake {
+
+        transform: scale(.72);
+    }
+
+
+    #blowButton {
+
+        margin-top: 3px;
+
+        padding:
+            10px 24px;
+
+        font-size: 15px;
+    }
+
+}
+
+.triangle-banner {
+    position: fixed;
+    top: 0;
+    width: 300px;
+    height: 130px;
+    z-index: 10;
+    display: flex;
+    gap: 18px;
+}
+
+.left-banner {
+    left: 10px;
+    transform: rotate(5deg);
+}
+
+.right-banner {
+    right: 10px;
+    transform: rotate(-5deg);
+}
+
+.triangle-banner span {
+    width: 42px;
+    height: 58px;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+    animation: bannerSwing 2s ease-in-out infinite alternate;
+}
+
+/* Colors */
+
+.triangle-banner span:nth-child(1) {
+    background: #ff69b4;
+}
+
+.triangle-banner span:nth-child(2) {
+    background: #ffd166;
+}
+
+.triangle-banner span:nth-child(3) {
+    background: #ff5c8a;
+}
+
+.triangle-banner span:nth-child(4) {
+    background: #6ec6ff;
+}
+
+.triangle-banner span:nth-child(5) {
+    background: #ffb347;
+}
+
+@keyframes bannerSwing {
+    from {
+        transform: rotate(-3deg);
+    }
+
+    to {
+        transform: rotate(3deg);
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .triangle-banner {
+        width: 180px;
+        height: 90px;
+        gap: 7px;
+    }
+
+    .triangle-banner span {
+        width: 30px;
+        height: 42px;
+    }
+
+    .left-banner {
+        left: 2px;
+    }
+
+    .right-banner {
+        right: 2px;
+    }
+}

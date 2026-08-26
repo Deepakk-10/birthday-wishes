@@ -1,0 +1,619 @@
+body {
+    min-height: 100vh;
+
+    background: linear-gradient(
+        135deg,
+        #fff0f6,
+        #ffd6e7,
+        #ffc1dc
+    );
+
+    overflow: hidden;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    background: linear-gradient(
+        135deg,
+        #fff0f6,
+        #ffd6e7,
+        #ffc1dc
+    );
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   CENTER CONTAINER
+========================= */
+
+.letter-container {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+/* =========================
+   LETTER BUTTON
+========================= */
+
+.letter-button {
+    position: relative;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    animation: floatingLetter 2.5s ease-in-out infinite;
+}
+
+
+/* =========================
+   ENVELOPE
+========================= */
+
+.envelope {
+    position: relative;
+
+    width: 280px;
+    height: 190px;
+
+    filter:
+        drop-shadow(0 10px 15px rgba(180, 70, 120, 0.25))
+        drop-shadow(0 0 15px rgba(255, 105, 180, 0.4));
+}
+
+
+/* Back */
+
+.envelope-back {
+    position: absolute;
+
+    inset: 0;
+
+    background: #fffafa;
+
+    border-radius: 8px;
+}
+
+
+/* Front */
+
+.envelope-front {
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    width: 100%;
+    height: 70%;
+
+    background: #ffe4ef;
+
+    clip-path: polygon(
+        0 0,
+        50% 55%,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
+
+    border-radius: 0 0 8px 8px;
+}
+
+
+/* Flap */
+
+.envelope-flap {
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+    height: 60%;
+
+    background: #ffd1e2;
+
+    clip-path: polygon(
+        0 0,
+        50% 100%,
+        100% 0
+    );
+
+    transform-origin: top center;
+
+    transition: transform 0.8s ease;
+
+    z-index: 5;
+}
+
+
+/* Heart */
+
+.heart {
+    position: absolute;
+
+    left: 50%;
+    top: 48%;
+
+    transform: translate(-50%, -50%);
+
+    color: #ff4f9a;
+
+    font-size: 35px;
+
+    text-shadow:
+        0 0 8px #ff69b4,
+        0 0 15px #ff1493;
+
+    z-index: 8;
+
+    transition: 0.5s;
+}
+
+
+/* =========================
+   CLICK TEXT
+========================= */
+
+.click-text {
+    margin-top: 18px;
+
+    color: #d93682;
+
+    font-family:
+        "Segoe Script",
+        cursive;
+
+    font-size: 17px;
+
+    animation: textGlow 1.5s ease-in-out infinite;
+}
+
+
+/* =========================
+   FLOATING LETTER
+========================= */
+
+@keyframes floatingLetter {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes textGlow {
+
+    0% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.6;
+    }
+}
+
+
+/* =========================
+   WISH NOTE
+========================= */
+
+.wish-note {
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    width: 420px;
+
+    max-width: 85vw;
+
+    background: #fffdf8;
+
+    padding: 35px;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 10px 35px rgba(150, 50, 100, 0.25),
+        0 0 20px rgba(255, 105, 180, 0.25);
+
+    transform:
+        translate(-50%, 150%)
+        rotate(-3deg);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    z-index: 20;
+}
+
+
+/* =========================
+   NOTE CONTENT
+========================= */
+
+.note-content {
+
+    color: #7d3155;
+
+    text-align: center;
+
+    font-family:
+        "Segoe Script",
+        cursive;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+.note-title {
+
+    color: #e83e8c;
+
+    font-size: 30px;
+
+    margin-bottom: 18px;
+
+    font-weight: bold;
+}
+
+
+.note-content p {
+
+    margin-bottom: 14px;
+}
+
+
+.note-end {
+
+    margin-top: 20px;
+
+    color: #e83e8c;
+
+    font-size: 18px;
+}
+
+
+/* =========================
+   OPEN ANIMATION
+========================= */
+
+.letter-container.open .letter-button {
+
+    animation: none;
+
+    transform:
+        translateY(100px)
+        scale(0.8);
+
+    opacity: 0;
+
+    transition:
+        transform 0.8s ease,
+        opacity 0.6s ease;
+}
+
+
+.letter-container.open .envelope-flap {
+
+    transform:
+        rotateX(180deg);
+}
+
+
+.letter-container.open .wish-note {
+
+    visibility: visible;
+
+    animation: noteComeOut 1.2s
+        cubic-bezier(0.22, 1, 0.36, 1)
+        forwards;
+}
+
+
+@keyframes noteComeOut {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, 150%)
+            rotate(-8deg);
+    }
+
+    60% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -55%)
+            rotate(3deg);
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            rotate(0deg);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .envelope {
+
+        width: 230px;
+
+        height: 155px;
+    }
+
+    .wish-note {
+
+        width: 80vw;
+
+        padding: 25px;
+    }
+
+    .note-content {
+
+        font-size: 15px;
+    }
+
+    .note-title {
+
+        font-size: 25px;
+    }
+}
+/* =========================
+   FALLING PARTY RIBBONS
+========================= */
+
+.falling-ribbons {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 2;
+}
+
+
+/* Individual ribbon */
+
+.ribbon {
+    position: absolute;
+
+    top: -40px;
+
+    width: 7px;
+    height: 28px;
+
+    border-radius: 50%;
+
+    background: #ff4fa3;
+
+    box-shadow:
+        0 0 5px #ff69b4,
+        0 0 10px #ff1493,
+        0 0 15px rgba(255, 255, 255, 0.9);
+
+    opacity: 0.9;
+
+    animation:
+        ribbonFall linear infinite,
+        ribbonSwing ease-in-out infinite;
+}
+
+
+/* Falling animation */
+
+@keyframes ribbonFall {
+
+    0% {
+        top: -50px;
+    }
+
+    100% {
+        top: 110vh;
+    }
+
+}
+
+
+/* Side-to-side movement */
+
+@keyframes ribbonSwing {
+
+    0% {
+        margin-left: 0;
+        transform: rotate(0deg);
+    }
+
+    25% {
+        margin-left: 35px;
+        transform: rotate(90deg);
+    }
+
+    50% {
+        margin-left: -20px;
+        transform: rotate(180deg);
+    }
+
+    75% {
+        margin-left: 30px;
+        transform: rotate(270deg);
+    }
+
+    100% {
+        margin-left: 0;
+        transform: rotate(360deg);
+    }
+
+}
+/* =========================
+   CONTINUE BUTTON
+========================= */
+
+.continue-button {
+    position: absolute;
+
+    left: 50%;
+    bottom: 7%;
+
+    transform: translateX(-50%) translateY(20px);
+
+    padding: 13px 35px;
+
+    border: 2px solid white;
+
+    border-radius: 30px;
+
+    background: #ff69b4;
+
+    color: white;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 10px #ff69b4,
+        0 0 25px rgba(255, 20, 147, 0.5);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+
+    z-index: 30;
+}
+
+/* =========================
+   END BUTTON
+========================= */
+
+.end-button {
+    position: absolute;
+
+    left: 50%;
+    bottom: 7%;
+
+    transform: translateX(-50%) translateY(20px);
+
+    padding: 13px 40px;
+
+    border: 2px solid white;
+    border-radius: 30px;
+
+    background: #ff69b4;
+
+    color: white;
+
+    font-size: 18px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 10px #ff69b4,
+        0 0 25px rgba(255, 20, 147, 0.5);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+
+    z-index: 30;
+}
+
+.end-button.show {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateX(-50%) translateY(0);
+
+    animation: endGlow 1.5s ease-in-out infinite;
+}
+
+.end-button:hover {
+    transform: translateX(-50%) scale(1.08);
+}
+
+@keyframes endGlow {
+
+    0% {
+        box-shadow:
+            0 0 8px #ff69b4;
+    }
+
+    50% {
+        box-shadow:
+            0 0 20px #ff1493,
+            0 0 35px #ff69b4;
+    }
+
+    100% {
+        box-shadow:
+            0 0 8px #ff69b4;
+    }
+}

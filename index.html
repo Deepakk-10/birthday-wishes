@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise 💖</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="glitter-container"></div>
+    <div class="login-container">
+
+        <h1>Enter the Password</h1>
+
+        <div class="password-boxes">
+            <input type="text" maxlength="1" readonly>
+            <input type="text" maxlength="1" readonly>
+            <input type="text" maxlength="1" readonly>
+            <input type="text" maxlength="1" readonly>
+        </div>
+
+        <div class="keypad">
+            <button onclick="pressNumber('1')">1</button>
+            <button onclick="pressNumber('2')">2</button>
+            <button onclick="pressNumber('3')">3</button>
+
+            <button onclick="pressNumber('4')">4</button>
+            <button onclick="pressNumber('5')">5</button>
+            <button onclick="pressNumber('6')">6</button>
+
+            <button onclick="pressNumber('7')">7</button>
+            <button onclick="pressNumber('8')">8</button>
+            <button onclick="pressNumber('9')">9</button>
+
+            <button class="zero" onclick="pressNumber('0')">0</button>
+        </div>
+
+        <button class="continue-btn" onclick="checkPassword()">
+            Continue
+        </button>
+
+        <p id="message"></p>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

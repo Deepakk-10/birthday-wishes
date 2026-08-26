@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Birthday Khushi 💖</title>
+
+    <link rel="stylesheet" href="birthday.css">
+</head>
+
+<body>
+
+    <!-- Falling balloons -->
+    <div id="balloon-container"></div>
+
+    <!-- Party poppers -->
+    <div id="party-container"></div>
+
+    <!-- Birthday text -->
+    <img
+        src="birthday-text-transparent.png"
+        class="birthday-text"
+        alt="Happy Birthday Khushi"
+    >
+
+
+    <!-- PHOTO 1 -->
+    <div class="friend-photo photo1">
+        <img src="friend1.jpg.jpg" alt="Friend Photo 1">
+    </div>
+
+    <!-- PHOTO 2 -->
+    <div class="friend-photo photo2">
+        <img src="friend2.png.png" alt="Friend Photo 2">
+    </div>
+
+    <!-- PHOTO 3 -->
+    <div class="friend-photo photo3">
+        <img src="friend3.png.png" alt="Friend Photo 3">
+    </div>
+
+    <!-- PHOTO 4 -->
+    <div class="friend-photo photo4">
+        <img src="friend4.jpg.jpg" alt="Friend Photo 4">
+    </div>
+
+
+    <!-- CAKE -->
+    <div class="cake-section">
+
+        <div class="cake">
+
+            <!-- 5 candles -->
+            <div class="candle candle1">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle candle2">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle candle3">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle candle4">
+                <div class="flame"></div>
+            </div>
+
+            <div class="candle candle5">
+                <div class="flame"></div>
+            </div>
+
+            <!-- Cake -->
+            <div class="cake-top"></div>
+            <div class="cake-middle"></div>
+            <div class="cake-bottom"></div>
+
+        </div>
+
+
+        <!-- Button -->
+        <button id="blowButton">
+            💨 BLOW
+        </button>
+
+    </div>
+
+
+    <script src="birthday.js"></script>
+
+
+    <script>
+
+        const blowButton = document.getElementById("blowButton");
+        const flames = document.querySelectorAll(".flame");
+
+        let blown = false;
+
+
+        blowButton.addEventListener("click", function () {
+
+            if (!blown) {
+
+                blown = true;
+
+                /* Blow out candles */
+                flames.forEach(function (flame) {
+                    flame.classList.add("blown-out");
+                });
+
+
+                /* Party poppers */
+                createPartyPoppers();
+
+
+                /* Change button */
+                setTimeout(function () {
+
+                    blowButton.innerHTML = "➡️ CONTINUE";
+
+                }, 800);
+
+            }
+
+            else {
+
+                /* NEXT PAGE */
+                window.location.href = "glimpse.html";
+
+            }
+
+        });
+
+
+        /* =========================
+           PARTY POPPERS
+        ========================= */
+
+        function createPartyPoppers() {
+
+            const partyContainer =
+                document.getElementById("party-container");
+
+            const sides = ["left", "right"];
+
+            sides.forEach(function(side) {
+
+                for (let i = 0; i < 35; i++) {
+
+                    const confetti =
+                        document.createElement("span");
+
+                    confetti.classList.add(
+                        "party-piece"
+                    );
+
+                    confetti.style.setProperty(
+                        "--x",
+                        (Math.random() * 220 - 110) + "px"
+                    );
+
+                    confetti.style.setProperty(
+                        "--y",
+                        (Math.random() * -260 - 80) + "px"
+                    );
+
+                    confetti.style.setProperty(
+                        "--rotate",
+                        (Math.random() * 720 - 360) + "deg"
+                    );
+
+                    confetti.style.background =
+                        getRandomColor();
+
+                    if (side === "left") {
+
+                        confetti.style.left =
+                            "8%";
+
+                    } else {
+
+                        confetti.style.right =
+                            "8%";
+
+                    }
+
+                    partyContainer.appendChild(confetti);
+
+
+                    setTimeout(function () {
+                        confetti.remove();
+                    }, 2200);
+
+                }
+
+            });
+
+        }
+
+
+        function getRandomColor() {
+
+            const colors = [
+                "#ff1493",
+                "#ff69b4",
+                "#ffd700",
+                "#00bfff",
+                "#8a2be2",
+                "#ff4500",
+                "#32cd32"
+            ];
+
+            return colors[
+                Math.floor(
+                    Math.random() * colors.length
+                )
+            ];
+
+        }
+
+    </script>
+
+    <div class="triangle-banner left-banner">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div class="triangle-banner right-banner">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+</body>
+
+</html>
